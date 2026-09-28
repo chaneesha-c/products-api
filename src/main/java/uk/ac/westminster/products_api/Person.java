@@ -7,7 +7,7 @@ package uk.ac.westminster.products_api;
  *   - a private "name" field
  *   - a no-argument constructor (required by Jackson later in the module)
  *   - a full constructor
- *   - a getter and setter for "name"
+ *   - a getter and setter for "name"q
  *
  * TODO (Lab Activity 3):
  *   Add a new private String field called "email", following the
