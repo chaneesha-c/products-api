@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>4.1.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>uk.ac.westminster</groupId>
 	<artifactId>products-api</artifactId>
@@ -40,12 +40,6 @@
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- ================================================================
-             WEEK 1 - ACTIVITY 2
-             Add the springdoc-openapi dependency below this comment block.
-             The exact <dependency> block is given in the Week 1 lab guide.
-             ================================================================ -->
 	</dependencies>
 
 	<build>
