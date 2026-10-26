@@ -22,6 +22,10 @@ public class Product {
         return name;
     }
 
+    public String getSummary() {
+        return getName() + " — £" + getPrice();
+    }
+
     public double getPrice() {
         return price;
     }

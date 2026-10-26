@@ -8,13 +8,14 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-    private List<Product> products = new ArrayList<>();
+    private final List<Product> products = new ArrayList<>();
     private Long nextId = 1L;
 
-      public ProductService(){
-          addProduct(new DigitalProduct(null, "ebook", 20.20, "https://download.com/ebook.pdf"));
-          addProduct(new PhysicalProduct(null,"wireless mouse", 30.20, 0.25));
-      }
+    public ProductService() {
+        addProduct(new DigitalProduct(null, "ebook", 20.20, "https://download.com/ebook.pdf", 4.2));
+        addProduct(new PhysicalProduct(null, "wireless mouse", 30.20, 0.25, "12cm x 6cm x 3cm"));
+    }
+
     public List<Product> getAllProducts() {
         return products;
     }
@@ -27,7 +28,7 @@ public class ProductService {
 
     public Optional<Product> getProductById(Long id) {
         return products.stream()
-                .filter(p -> p.getId().equals(id)) // Always use .equals() for Long objects
+                .filter(p -> p.getId().equals(id))
                 .findFirst();
     }
 
@@ -38,6 +39,14 @@ public class ProductService {
     public List<Product> findByName(String name) {
         return products.stream()
                 .filter(p -> p.getName().contains(name))
-                .toList(); // If on Java 11-15, use .collect(java.util.stream.Collectors.toList())
+                .toList();
+    }
+
+    public List<String> getAllSummaries() {
+        List<String> summaries = new ArrayList<>();
+        for (Product p : products) {
+            summaries.add(p.getSummary());
+        }
+        return summaries;
     }
 }

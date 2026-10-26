@@ -1,29 +1,40 @@
 package uk.ac.westminster.products_api;
 
-public class PhysicalProduct extends Product{
-
+public class PhysicalProduct extends Product implements Discountable {
     private double weightKg;
-    private String  dimensions;
+    private String dimensions;
+    private double discountedPrice;
 
-public PhysicalProduct(){
-}
+    public PhysicalProduct() {}
 
-public PhysicalProduct(long id, String name, double price, double weightKg, String dimentions){
-    super(id, name, price);
-
-    this.weightKg = weightKg;
-    this.dimensions = dimentions;
-
-}
-
-    public PhysicalProduct(Object id, String name, double price, double weightKg) {
+    public PhysicalProduct(Long id, String name, double price, double weightKg, String dimensions) {
+        super(id, name, price);
+        this.weightKg = weightKg;
+        this.dimensions = dimensions;
+        this.discountedPrice = price;
     }
 
-    public double getWeightKg(){
-    return weightKg;
-}
+    @Override
+    public String getSummary() {
+        return "Physical: " + getName() + " | Weight: " + weightKg + "kg";
+    }
 
-public String getDimensions(){
-    return dimensions;
-}
+    @Override
+    public void applyDiscount(double rate) {
+        double cappedRate = Math.min(rate, 0.20);
+        this.discountedPrice = getPrice() * (1 - cappedRate);
+    }
+
+    @Override
+    public double getDiscountedPrice() {
+        return discountedPrice;
+    }
+
+    public double getWeightKg() {
+        return weightKg;
+    }
+
+    public String getDimensions() {
+        return dimensions;
+    }
 }
